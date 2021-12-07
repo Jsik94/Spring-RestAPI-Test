@@ -8,5 +8,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="memberInsert"  parameterType="member" >
 		INSERT INTO MEMBER VALUES(#{username},#{password},#{name},SYSDATE)
 	</insert>
+	
+	<select id="memberSelectList" resultType="member">
+		SELECT * FROM MEMBER 
+	</select>
 
+
+	<select id="memberSelectOne" parameterType="String" resultType="member">
+		SELECT * FROM MEMBER WHERE USERNAME = #{USERNAME}
+	</select>
+	
+	<update id="memberUpdate" parameterType="member">
+		UPDATE MEMBER SET PASSWORD = #{password} , NAME = #{name} WHERE USERNAME = #{username}
+	</update>
+	
+	<delete id="memberDelete" parameterType="String">
+		DELETE member WHERE username = #{username}
+	</delete>
+	
 </mapper>
